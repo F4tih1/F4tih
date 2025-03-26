@@ -10,5 +10,5 @@ Aşağıdaki adımları takip ederek projeyi çalıştırabilirsiniz:
 
 81. Satıdaki gibi sınıfları gruplayıp kendi dbs inizdeki öğrencileri içe aktarmanız lazım
 
-91. Satırda Sınıfların mevcutklarını düzenlemelisiniz "Dağıtılacak sınıfların kaç öğrenci alabileceiğini örneğin 10/B sınıf 27 öğrenci alabilirken 10/D şubesi 10 öğrenci alabilir" bunun gibi düzenlemerli bu satıra eklemelisiniz
-92. Satırsa ise sınıfları tanımlamalısınız 
+91. Satırda Sınıfların mevcutklarını düzenlemelisiniz     "Dağıtılacak sınıfların kaç öğrenci alabileceiğini örneğin 10/B sınıf 27 öğrenci alabilirken 10/D şubesi 10 öğrenci alabilir" bunun gibi düzenlemerli bu satıra eklemelisiniz
+92. Satırda ise sınıfları tanımlamalısınız 
