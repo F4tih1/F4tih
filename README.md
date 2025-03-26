@@ -6,7 +6,7 @@ Bu proje, Sınıfların homojen eksiksiz ve kişiselleştirilebilir bir şekilde
 
 Aşağıdaki adımları takip ederek projeyi çalıştırabilirsiniz:
 
-İndex dosyasını indirerek herhangi bir html görüntüleyicisnden çıkıt alabilirsiniz 
+İndex dosyasını indirerek herhangi bir html görüntüleyicisnden çıktı alabilirsiniz 
 
 81. Satıdaki gibi sınıfları gruplayıp kendi dbs inizdeki öğrencileri içe aktarmanız lazım
 
