@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sınıf Dağıtımı</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 70%;
+            max-width: 800px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        h2 {
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .output {
+            text-align: left;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 8px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .output h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .output p {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Kelebek Sistemi - Sınıf Dağıtımı</h2>
+        <button onclick="kaydetVeDagit()">Sınıfları Karıştır</button>
+        <div class="output" id="output"></div>
+        <div class="footer">Developed by F4tih</div>
+    </div>
+
+    <script>
+        let ogrencilerListesi = {
+            5: ["Ali", "Ayşe", "Mehmet", "Fatma", "Ahmet", "Elif", "Deniz", "Burak", "Selin", "Can", "Ece", "Oğuz", "Pınar", "Umut", "Gül", "Hakan", "Merve", "Emre", "Seda", "Kaan"],
+            6: ["Buse", "Onur", "Gizem", "Tolga", "Damla", "Yiğit", "Aslı", "Serkan", "Ceren", "Furkan", "Esra", "Mustafa", "İrem", "Hande", "Barış", "Simge", "Kemal", "Duygu", "Cenk", "Melis"],
+            7: ["Volkan", "Bahar", "Rıza", "Leyla", "Murat", "Nihan", "Erdem", "Pelin", "Süleyman", "Tuğçe", "Fatih", "Zeynep", "Ceylin", "Servet", "Arda", "Ünal", "Ata", "Tuna", "Yılmaz", "Osman"],
+            8: ["Fatih", "Zeynep", "Ceylin", "Servet", "Ayşe", "Mehmet", "Fatma", "Ali", "Elif", "Ahmet", "Deniz", "Burak", "Selin", "Can", "Ece", "Oğuz", "Pınar", "Umut", "Gül", "Hakan"],
+            9: ["Arda", "Ünal", "Ata", "Merve", "Emre", "Seda", "Kaan", "Buse", "Onur", "Gizem", "Tolga", "Damla", "Yiğit", "Aslı", "Serkan", "Ceren", "Furkan", "Esra", "Mustafa", "İrem"],
+            10: ["Tuna", "Yılmaz", "Osman", "Hande", "Barış", "Simge", "Kemal", "Duygu", "Cenk", "Melis", "Volkan", "Bahar", "Rıza", "Leyla", "Murat", "Nihan", "Erdem", "Pelin", "Süleyman", "Tuğçe"],
+            11: ["Ali", "Ayşe", "Mehmet", "Fatma", "Ahmet", "Elif", "Deniz", "Burak", "Selin", "Can", "Ece", "Oğuz", "Pınar", "Umut", "Gül", "Hakan", "Merve", "Emre", "Seda", "Kaan"]
+        };
+        
+        function kaydetVeDagit() {
+            let siniflar = {"A": 20, "B": 20, "C": 23, "D": 23, "E": 24, "F": 30, "G":10};
+            let dagitim = {"A": [], "B": [], "C": [], "D":[],"E":[],"F":[],"G":[]};
+            let ogrenciHavuzu = [];
+            
+            for (let key in ogrencilerListesi) {
+                ogrencilerListesi[key].forEach(ogrenci => {
+                    ogrenciHavuzu.push({ isim: ogrenci, sinif: key });
+                });
+            }
+            
+            ogrenciHavuzu.sort(() => Math.random() - 0.5);
+            
+            while (ogrenciHavuzu.length > 0) {
+                let siniflarSirasi = Object.keys(siniflar).sort(() => Math.random() - 0.5);
+                for (let sinif of siniflarSirasi) {
+                    if (ogrenciHavuzu.length > 0 && dagitim[sinif].length < siniflar[sinif]) {
+                        let ogrenci = ogrenciHavuzu.pop();
+                        dagitim[sinif].push(ogrenci.isim);
+                    }
+                }
+            }
+            
+            let outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = "<h3>Dağıtım Sonucu</h3>";
+            Object.keys(dagitim).forEach(sinif => {
+                outputDiv.innerHTML += `<p><strong>${sinif} Sınıfı:</strong> ${dagitim[sinif].join(", ")}</p>`;
+            });
+        }
+    </script>
+</body>
+</html>
